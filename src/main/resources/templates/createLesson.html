@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form th:action="@{createLesson}" th:object="${formContent}" method="post">
+        <table >
+            <tr>
+                <td><label th:text="Titre" /></td>
+                <td><input type="text" th:field="*{title}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="Note" /></td>
+                <td><input type="number" th:field="*{note}" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Creation" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
