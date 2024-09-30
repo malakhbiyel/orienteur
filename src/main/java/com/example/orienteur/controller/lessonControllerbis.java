@@ -48,7 +48,7 @@ public class lessonControllerbis {
         }
         lessonRepository.save(lesson);
         model.addAttribute("message", "Leçon créée avec succès !");
-        return "redirect:/lessons/AllLessons";
+        return "redirect:/lessons/showAll";
     }
 
 }

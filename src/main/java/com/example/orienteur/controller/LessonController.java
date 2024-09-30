@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/lessons")
@@ -31,6 +33,11 @@ public class LessonController {
         @ResponseStatus(HttpStatus.CREATED)
         public Lesson create(@RequestBody Lesson lesson) {
                 return lessonRepository.save(lesson);
+        }
+
+        @GetMapping("/All")
+        public List<Lesson> findAll() {
+                return lessonRepository.findAll();
         }
 
 

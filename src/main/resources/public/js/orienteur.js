@@ -67,3 +67,31 @@ const counter = document.querySelector("#idCounter");
 
 btnUp.addEventListener("click", count);
 btnClear.addEventListener("click", clear);
+
+const REPLIED = 4;
+const HTTP_OK = 200;
+
+function getAll() {
+    const xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == REPLIED) {
+            if (xhr.status == HTTP_OK) {
+                console.log(xhr.responseText);
+                const response = JSON.parse(xhr.responseText);
+                console.log(response);
+            } else {
+                console.error("Erreur HTTP : " + xhr.status);
+            }
+        }
+    };
+
+    try {
+        xhr.open("GET", "/api/lessons/showAll", true);
+        xhr.send();
+    } catch (err) {
+        alert(err.name + " " + err.message);
+    }
+}
+
+getAll();
