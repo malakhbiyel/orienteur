@@ -5,22 +5,23 @@
     <title>Liste des cours</title>
 </head>
 <body>
-<table>
-    <thead>
-        <tr>
-            <th> Title </th>
-            <th> Note </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:if="${lessons.size() == 0}">
-            <td colspan="2"> No Lessons Available </td>
-        </tr>
-        <tr th:each="lesson : ${lessons}">
-            <td><span th:text="${lesson.title}"> Title </span></td>
-            <td><span th:text="${lesson.note}"> Note </span></td>
-        </tr>
-    </tbody>
-</table>
+    <h1>Détails de tous les cours</h1>
+    <table>
+        <thead>
+            <tr>
+                <th> Title </th>
+                <th> Note </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${lessons.size() == 0}">
+                <td colspan="2"> No Lessons Available </td>
+            </tr>
+            <tr th:each="lesson : ${lessons}">
+                <td><span th:text="${lesson.title}"> Title </span></td>
+                <td><span th:text="${lesson.note}"> Note </span></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

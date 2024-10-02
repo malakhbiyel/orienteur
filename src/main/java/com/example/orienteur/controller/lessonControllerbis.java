@@ -36,19 +36,16 @@ public class lessonControllerbis {
     }
 
     @PostMapping("/createLesson")
-    public String createLesson(@ModelAttribute Lesson lesson, Model model){
-        if (lesson.getTitle() == null || lesson.getTitle().isEmpty()) {
-            model.addAttribute("message", "Le titre est obligatoire.");
-            return "createLesson";
-        }
-
-        if (lesson.getNote() < 0) {
-            model.addAttribute("message", "La note doit être positive.");
-            return "createLesson";
-        }
+    public String createLesson(@ModelAttribute Lesson lesson, Model model) {
+        model.addAttribute("lesson", lesson);
         lessonRepository.save(lesson);
-        model.addAttribute("message", "Leçon créée avec succès !");
-        return "redirect:/lessons/showAll";
+        return "redirect:/lessons/showById?id="+lesson.getId();
+    }
+
+    @GetMapping("/sortAll")
+    public String sortAllLessons(Model model) {
+        model.addAttribute("lessonsSorted", lessonRepository.findAllByOrderByNoteAsc());
+        return "AllLessonsSorted";
     }
 
 }

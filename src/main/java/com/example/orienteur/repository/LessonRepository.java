@@ -13,6 +13,8 @@ public interface LessonRepository extends CrudRepository<Lesson, Long> {
     @Override
     <S extends Lesson> Iterable<S> saveAll(Iterable<S> entities);
 
+    List<Lesson> findAllByOrderByNoteAsc();
+
     @Override
     List<Lesson> findAll();
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails des cours classés par note</title>
+</head>
+<body>
+    <h1>Détails des cours classés par note</h1>
+    <table>
+        <thead>
+        <tr>
+            <th> Title </th>
+            <th> Note </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${lessonsSorted.empty}">
+            <td colspan="2"> No Lessons Available </td>
+        </tr>
+        <tr th:each="lesson : ${lessonsSorted}">
+            <td><span th:text="${lesson.title}"> Titre </span></td>
+            <td><span th:text="${lesson.note}"> Note </span></td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
